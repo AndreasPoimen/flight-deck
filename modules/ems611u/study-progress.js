@@ -30,6 +30,7 @@ function decorate(){
  const sidebar=document.querySelector('.sidebar');if(sidebar)sidebar.querySelectorAll('a.lesson-link').forEach(link=>{const id=link.getAttribute('href')?.split('/')[1];if(!valid.has(id)||link.parentElement.classList.contains('progress-lesson'))return;const wrap=document.createElement('div');wrap.className='progress-lesson';link.before(wrap);wrap.append(link,checkbox(id));});
  const article=document.querySelector('.study-article'),id=location.hash.slice(1).split('/')[1]||document.querySelector('.sidebar .lesson-link[aria-current="page"]')?.getAttribute('href')?.split('/')[1];
  if(article&&valid.has(id)&&!article.querySelector('.progress-current')){const label=document.createElement('label');label.className='progress-current';label.append(checkbox(id),document.createTextNode(' Mark this lesson as studied'));article.querySelector('.article-tools')?.after(label);}
+ if(article&&valid.has(id)){const index=lessons.findIndex(lesson=>lesson.id===id),next=lessons[index+1];const link=next&&article.querySelector(`.lesson-pagination a[href="#learn/${next.id}"]`);if(link&&!link.dataset.progressNext){link.dataset.progressNext='true';link.addEventListener('click',()=>{checked.add(id);save();update();});}}
  update();
 }
 window.addEventListener('hashchange',decorate);
