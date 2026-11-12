@@ -6,3 +6,7 @@
 
 /* Four destinations: revision, project and industry. */
 .module-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:1260px;margin-inline:auto}.card-project{display:flex;flex-direction:column;grid-column:auto;min-height:560px}.card-project .scene{height:260px}.card-project .card-content{padding:25px 25px 19px}.card-project .scene-note{bottom:7px}.card-atlas{--glow:142,238,173}.atlas-world{animation:atlasTurn 38s linear infinite}.atlas-routes{animation:atlasRoute 5s linear infinite}.atlas-beacons{animation:atlasBeacon 3s ease-in-out infinite}.atlas-scene .scene-halo{background:#75d9a012;box-shadow:0 0 65px #75d9a020}.card-atlas .card-kicker,.card-atlas .launch-link b{color:#b0efc4}@keyframes atlasTurn{to{transform:translateX(-300px)}}@keyframes atlasRoute{to{stroke-dashoffset:-95}}@keyframes atlasBeacon{0%,100%{opacity:.15;stroke-width:.6}50%{opacity:.95;stroke-width:1.8}}@media(min-width:1500px){.card-project .scene{height:300px}}@media(max-width:700px){.module-grid{grid-template-columns:1fr}.card-project{min-height:0}.card-project .scene{height:265px}.card-project .card-content{padding:25px}}
+
+/* Keep the aircraft level while preserving its floating and hover motion. */
+@keyframes aircraftBank{0%,100%{transform:translateY(3px)}50%{transform:translateY(-4px)}}
+.module-card:hover .aircraft-bank{animation-duration:3s}
